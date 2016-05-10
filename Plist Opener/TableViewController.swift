@@ -14,6 +14,8 @@ enum TitledPlistReaderError: ErrorType {
     case UntitledPlist
 }
 
+var plistError: ErrorType! = nil
+
 class TableViewController: UITableViewController {
     
     let plistFilenames = ["good", "untitled", "malformed", "nonexistent"]
@@ -37,6 +39,7 @@ class TableViewController: UITableViewController {
     @IBAction func back(segue: UIStoryboardSegue) {
     }
 
+    @IBOutlet weak var errorTextField: UITextField! = nil
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -81,6 +84,12 @@ class TableViewController: UITableViewController {
         let plistFilename = plistFilenames[row]
         let plistTitle = (try? titleForPlist(plistFilename)) ?? "<No Title Found!>"
         let destinationViewController = segue.destinationViewController as! TitleViewController
+        do {
+            _ = try titleForPlist(plistFilename)
+                } catch let plistError {
+                    let errorMessage = plistError
+                    destinationViewController.plistError = errorMessage
+                        }
         destinationViewController.plistTitle = plistTitle
     }
 
