@@ -10,28 +10,22 @@ import UIKit
 class TitleViewController: UIViewController {
     
     var plistTitle: String! = nil
-    var plistError: ErrorType! = nil
+    var errorText: String! = nil
     
     @IBOutlet weak var titleTextField: UITextField! = nil
-    @IBOutlet weak var errorTextField: UITextField! = nil
-
+    @IBOutlet weak var errorTextView: UITextView! = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(animated: Bool) {
         titleTextField.text = plistTitle
-        if plistTitle != nil {
-           
-            errorTextField.text = "\(plistError)"
-            errorTextField.hidden = false
-            
+        
+        if errorText != "" {
+            errorTextView.text = errorText
+            self.errorTextView.hidden = false
         }
         super.viewWillAppear(animated)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
 }

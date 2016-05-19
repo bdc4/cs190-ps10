@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KNA-Ed-0Cd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KNA-Ed-0Cd">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -28,6 +28,9 @@
                                 <rect key="frame" x="288" y="171" width="25" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Z5v-8S-8JY" id="LHp-Wn-jDc"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fer-g2-jAN">
                                 <rect key="frame" x="283" y="251" width="34" height="30"/>
@@ -36,32 +39,38 @@
                                     <segue destination="c61-ct-CNb" kind="unwind" unwindAction="back:" id="nVu-ti-nXG"/>
                                 </connections>
                             </button>
-                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7me-5j-e6W">
-                                <rect key="frame" x="252" y="341" width="97" height="30"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="error text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qCf-iL-shp">
+                                <rect key="frame" x="180" y="313" width="240" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration" label="errorTextView"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="DOV-iG-jyq"/>
+                                    <constraint firstAttribute="height" constant="30" id="Wck-vH-BJq"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="0.010267665139987225" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <connections>
-                                    <outlet property="delegate" destination="Z5v-8S-8JY" id="f92-Ns-2pb"/>
+                                    <outlet property="delegate" destination="Z5v-8S-8JY" id="oOK-oL-Mir"/>
                                 </connections>
-                            </textField>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="i1l-G1-40a" firstAttribute="top" secondItem="7me-5j-e6W" secondAttribute="bottom" constant="165" id="028-YY-0Z4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7me-5j-e6W" secondAttribute="trailing" constant="231" id="36e-L2-FNv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qCf-iL-shp" secondAttribute="trailing" constant="160" id="0D1-as-Zvw"/>
                             <constraint firstItem="GHl-ae-M7L" firstAttribute="centerX" secondItem="yh9-TU-gcq" secondAttribute="centerX" id="5As-nQ-PPI"/>
                             <constraint firstItem="Fer-g2-jAN" firstAttribute="top" secondItem="GHl-ae-M7L" secondAttribute="bottom" constant="50" id="5yj-le-cUb"/>
                             <constraint firstItem="9fV-rk-e7W" firstAttribute="centerX" secondItem="yh9-TU-gcq" secondAttribute="centerX" id="GdG-71-sM9"/>
-                            <constraint firstItem="7me-5j-e6W" firstAttribute="centerX" secondItem="Fer-g2-jAN" secondAttribute="centerX" id="WTW-q2-Kae"/>
-                            <constraint firstItem="7me-5j-e6W" firstAttribute="leading" secondItem="yh9-TU-gcq" secondAttribute="leadingMargin" constant="232" id="cyv-5t-itG"/>
                             <constraint firstItem="Fer-g2-jAN" firstAttribute="centerX" secondItem="yh9-TU-gcq" secondAttribute="centerX" id="eqH-qJ-tPg"/>
+                            <constraint firstItem="qCf-iL-shp" firstAttribute="leading" secondItem="yh9-TU-gcq" secondAttribute="leadingMargin" constant="160" id="gkb-bO-j6W"/>
+                            <constraint firstItem="i1l-G1-40a" firstAttribute="top" secondItem="qCf-iL-shp" secondAttribute="bottom" constant="193" id="hMX-yE-jM2"/>
                             <constraint firstItem="GHl-ae-M7L" firstAttribute="top" secondItem="9fV-rk-e7W" secondAttribute="bottom" constant="50" id="hXw-G8-3CD"/>
                             <constraint firstItem="9fV-rk-e7W" firstAttribute="top" secondItem="gCz-b6-CNu" secondAttribute="bottom" constant="100" id="m7q-0f-LLH"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
+                        <outlet property="errorTextView" destination="qCf-iL-shp" id="mdt-s6-KMg"/>
                         <outlet property="titleTextField" destination="GHl-ae-M7L" id="1Az-Wz-f6P"/>
                         <outlet property="view" destination="yh9-TU-gcq" id="Ecy-aV-iQ5"/>
                     </connections>
